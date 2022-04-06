@@ -49,6 +49,7 @@ export default {
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  height: 90vh;
 }
 .login{
   width: 20vw;

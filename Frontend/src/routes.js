@@ -5,6 +5,7 @@ import AddCert from './components/AddCert.vue'
 import RemoveCert from './components/RemoveCert.vue'
 import NavFeature from './components/NavFeature.vue'
 import UpdateCert from './components/UpdateCert.vue'
+import viewAllCert from './components/viewAllCert.vue'
 import CertDownload from './components/CertDownload.vue'
 import verifyCert from './components/verifyCert.vue'
 import { createRouter, createWebHistory } from 'vue-router';
@@ -34,6 +35,11 @@ const routes = [
         path: '/remove',
         name: 'RemoveCert',
         component: RemoveCert
+    },
+    {
+        path: '/viewAll',
+        name: 'viewAllCert',
+        component: viewAllCert
     },
     {
         path: '/feature',

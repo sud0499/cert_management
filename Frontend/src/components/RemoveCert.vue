@@ -3,7 +3,6 @@
   <div class=cert>
     <div id="ftr"><NavFeature /></div>
     <div class="form">
-        <!-- <div><input type="text" placeholder="Student Name" v-model="name"></div> -->
         <div><input type="text" placeholder="Roll No" v-model="rollNo"></div>
         <div><button v-on:click="delCert()">Delete</button></div>
     </div>   
@@ -26,9 +25,7 @@ export default {
   },
   methods: {
     async delCert() {
-        console.warn(this.rollNo);
       let result = await axios.delete(`http://localhost:4000/certs/${this.rollNo}`);
-      console.warn(result);
       if (result.status == 200) {
         alert("Certificate Deleted");
       }
@@ -40,7 +37,8 @@ export default {
 </script>
 <style scoped>
 .cert{
-    display: flex;
+  display: flex;
+  height: 90vh;
 }
 #ftr{
     display: flex;
@@ -49,6 +47,7 @@ export default {
     flex-grow: 0.8;
 }
 .form{
-    padding: 9%;
+  padding: 9%;
+  margin-top: 8%;
 }
 </style>

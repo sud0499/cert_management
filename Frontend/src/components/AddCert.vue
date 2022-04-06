@@ -56,9 +56,8 @@ export default {
 
 <style scoped>
 .cert{
-    height: 100%;
+    height: 90vh;
     display: flex;
-    /* text-align: center; */
 }
 #ftr{
     display: flex;

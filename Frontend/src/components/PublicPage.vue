@@ -1,28 +1,23 @@
 <template>
-  <NavBar />
-  <div>
-    <div class="public">
-      <div id="public_text"><h1>Validate Your Certificate Here</h1></div>
-      <div id="public_search">
-          <div class="search">
-            <h2>Verify Certificates Here</h2>
-            <div>
-              <input
-                id="CertificateId"
-                type="text"
-                placeholder="Enter Certificate id"
-                name="cert_id"
-                v-model="certId"
-                required
-              />
-            </div>
-            <div id="btn">
-              <button v-on:click="search()" id="submit" type="submit">Verify</button>
-            </div>
-          </div>
+<NavBar />
+<div class="public">
+  <div id="public_text">
+    <h1>Welcome to Public Verify Certificate,
+      <h6>------------------------------------------------------------------------------</h6>
+      Validate Your Certificates Here</h1>
+  </div>
+  <div id="public_search">
+    <div class="search">
+      <h2>Verify Certificates Here</h2>
+      <div>
+      <input id="CertificateId" type="text" placeholder="Enter Certificate id" name="cert_id" v-model="certId" required />
+      </div>
+      <div id="btn">
+      <button v-on:click="search()" id="submit" type="submit">Verify</button>
       </div>
     </div>
   </div>
+</div>
 </template>
 
 <script>
@@ -54,7 +49,7 @@ export default {
 </script>
 <style scoped>
 .public {
-  height: 80vh;
+  height: 90vh;
   display: flex;
   justify-content: center;
   align-items: center;
