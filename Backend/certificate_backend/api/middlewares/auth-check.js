@@ -1,17 +1,17 @@
-const jwt = require("jsonwebtoken")
+// const jwt = require("jsonwebtoken")
 
 
-module.exports = (req, res, next) => {
-    try {
-        console.log("Authorization headers incoming request");
-        const headertoken = req.headers.authorization.split(" ")[1];
-        let decoded = jwt.verify(headertoken, "sud");
-        req.userData = decoded
-        next();
+// module.exports = (req, res, next) => {
+//     try {
+//         console.log("Authorization headers incoming request");
+//         const headertoken = req.headers.authorization.split(" ")[1];
+//         let decoded = jwt.verify(headertoken, "sud");
+//         req.userData = decoded
+//         next();
 
-    } catch {
-        return res.status(401).json({
-            message: "Auth failed"
-        })
-    }
-}
+//     } catch {
+//         return res.status(401).json({
+//             message: "Auth failed"
+//         })
+//     }
+// }

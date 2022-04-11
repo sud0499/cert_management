@@ -47,18 +47,21 @@ export default {
 
 <style scoped>
 h1 {
-  color: orange;
+  color: red;
 }
 table {
-  width: 100vw;
+  width: 99vw;
 }
 th,
-td {
+td,h1 {
   padding: 15px;
   text-align: center;
 }
 thead,
 tr:nth-child(even) {
   background-color: #f2f2f2;
+}
+tr:nth-child(odd) {
+  background-color: #ffffff;
 }
 </style>

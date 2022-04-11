@@ -1,11 +1,8 @@
 const Cert = require("../models/cert.js");
 const mongoose = require("mongoose");
-const bcryptjs = require("bcryptjs");
-const jsonwebtoken = require("jsonwebtoken");
-
 
 const create_cert = (req, res, next) => {
-   Cert.find({
+    Cert.find({
         email: req.body.email
     }).exec()
         .then(cert => {
@@ -13,39 +10,27 @@ const create_cert = (req, res, next) => {
             console.log(cert);
 
             if (cert.length >= 1) {
-                return res.status(409).json({
+                return res.status(208).json({
                     message: "email already exist"
                 });
             } else {
-                bcryptjs.hash(req.body.rollNo, 10, (err, hash) => {
-                    if (err) {
-                        return res.status(500).json({
-                            error: err
-                        })
-                    }
-                    else {
-                        const cert = new Cert({
-                            _id: new mongoose.Types.ObjectId(),
-                            name: req.body.name,
-                            course: req.body.course,
-                            email: req.body.email,
-                            rollNo: req.body.rollNo,
-                            date:Date.now(),
-                        })
-                        cert.save()
-                            .then(result => {
-                                console.log("This is the result from saving");
-                                console.log(result);
-                                res.status(201).json({
-                                    message: "User created",
-                                    cert: result
-                                })
-                            })
-
-                    }
+                const cert = new Cert({
+                    _id: new mongoose.Types.ObjectId(),
+                    name: req.body.name,
+                    course: req.body.course,
+                    email: req.body.email,
+                    rollNo: req.body.rollNo,
+                    date: Date.now(),
                 })
-
-
+                cert.save()
+                    .then(result => {
+                        console.log("This is the result from saving");
+                        console.log(result);
+                        res.status(201).json({
+                            message: "Certificate Added",
+                            cert: result
+                        })
+                    })
             }
         }).catch(err => {
             console.log(err);
@@ -81,69 +66,69 @@ const get_all_cert = (req, res, next) => {
 const get_cert = (req, res, next) => {
     let certId = req.params.certId;
     Cert.find({
-    _id: certId
-   }).exec()
-    .then(
-        cert => {
-            if (cert.length >= 1) {
-                res.status(200).json({
-                    message: "The api ran successfully",
-                    certId,
-                    cert,
-                })
-                console.log("this is the found user");
-                console.log(cert);
+        _id: certId
+    }).exec()
+        .then(
+            cert => {
+                if (cert.length >= 1) {
+                    res.status(200).json({
+                        message: "The api ran successfully",
+                        certId,
+                        cert,
+                    })
+                    console.log("this is the found user");
+                    console.log(cert);
+                }
             }
-        }
-    )
-    .catch(err => {
-        res.status(500).json({
-            merror: "There has been an error",
-            error: err
+        )
+        .catch(err => {
+            res.status(500).json({
+                merror: "There has been an error",
+                error: err
+            })
         })
-    })
 }
 
 const delete_cert = (req, res, next) => {
-let rollNo = req.params.rollNo
-Cert.remove({
-    rollNo: rollNo
-})
-    .exec()
-    .then(
-        result => (
-            res.status(200).json({
-                message: "User successfully removed"
-            })
-        )
-    )
-    .catch(err => {
-        res.status(500).json({
-            merror: "There has been an error",
-            error: err
-        })
+    let rollNo = req.params.rollNo
+    Cert.remove({
+        rollNo: rollNo
     })
+        .exec()
+        .then(
+            result => (
+                res.status(200).json({
+                    message: "User successfully removed"
+                })
+            )
+        )
+        .catch(err => {
+            res.status(500).json({
+                merror: "There has been an error",
+                error: err
+            })
+        })
 }
 
 const update_cert = (req, res, next) => {
-    const rollNo= req.params.rollNo
+    const rollNo = req.params.rollNo
     const updateOps = {}
 
     for (const [key, value] of Object.entries(req.body)) {
         updateOps[key] = value
-}
-Cert.update({ rollNo: rollNo }, { $set: updateOps })
-    .exec()
-    .then(successResult => {
-        res.status(200).json({
-            message: "User Updated successfully"
+    }
+    Cert.update({ rollNo: rollNo }, { $set: updateOps })
+        .exec()
+        .then(successResult => {
+            res.status(200).json({
+                message: "User Updated successfully"
+            })
         })
-    })
-    .catch(err => {
-        res.status(500).json({
-            merror: "There has been an error",
-            error: err
+        .catch(err => {
+            res.status(500).json({
+                merror: "There has been an error",
+                error: err
+            })
         })
-    })
 }
-module.exports = { create_cert, get_all_cert, get_cert,delete_cert,update_cert };
+module.exports = { create_cert, get_all_cert, get_cert, delete_cert, update_cert };

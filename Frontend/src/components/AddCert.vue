@@ -31,7 +31,6 @@ export default {
   },
   methods: {
     async signup() {
-      console.warn("SignUp", this.name, this.email, this.password);
       let result = await axios.post("http://localhost:4000/certs/", {
         name: this.name,
         course: this.course,
@@ -41,10 +40,14 @@ export default {
       console.warn(result);
       if (result.status == 201) {
         alert("Certificate Added");
-      }
+      
       localStorage.setItem("user-info",JSON.stringify(result.data))
       localStorage.setItem("certId",result.data.cert._id)
       this.$router.push({name:'CertDownload'})
+      }
+      else{
+        alert(result.data.message);
+      }
     },
   },
   

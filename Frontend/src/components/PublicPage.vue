@@ -41,7 +41,7 @@ export default {
       }
       localStorage.setItem("user-info",JSON.stringify(result.data))
       localStorage.setItem("certId",result.data.cert[0]._id)
-       this.$router.push("/verify")
+      this.$router.push("/verify")
       
     },
   },
@@ -60,5 +60,8 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+h1{
+  color: rgb(120, 70, 70);
 }
 </style>

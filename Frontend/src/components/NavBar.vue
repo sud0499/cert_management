@@ -9,7 +9,7 @@
       />
     </div>
     <div id="n_logo">
-      <!-- <span>FYND</span> ACADEMY -->
+
     </div>
     <div id="n_deadspace"></div>
     <div id="n_deadspace"></div>

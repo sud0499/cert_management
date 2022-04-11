@@ -3,7 +3,7 @@
   <div class="admin">
     <div class="login">
       <input type="text" placeholder="Enter Email" v-model="email" />
-      <input type="text" placeholder="Enter Password" v-model="password" />
+      <input type="password" placeholder="Enter Password" v-model="password" />
       <button v-on:click="login()">LogIn</button>
     </div>
 
@@ -32,8 +32,6 @@ export default {
       let result = await axios.post(
         `http://localhost:4000/users/login`,{email:this.email,password:this.password}
       );
-      console.warn(this.email, this.password);
-      console.warn(result.data.length);
       if (result.status == 200) {
         localStorage.setItem("user-info", JSON.stringify(result.data[0]));
         this.$router.push({ name:'AddCert' });

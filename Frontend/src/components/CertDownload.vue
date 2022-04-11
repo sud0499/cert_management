@@ -36,7 +36,6 @@ export default {
   data(){
       return {
           user:null
-
       }
   },
   async created(){
