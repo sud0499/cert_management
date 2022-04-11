@@ -27,6 +27,9 @@ export default {
   border: solid 1px rgb(234, 231, 228);
   background-color: rgb(218, 216, 214);
   border-radius: 10px;
-  margin:2px;
+  margin:2.5px;
+  padding-left: 50px;
+  padding-right: 50px;
 }
+
 </style>

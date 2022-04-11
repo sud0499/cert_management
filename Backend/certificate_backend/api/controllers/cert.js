@@ -72,17 +72,15 @@ const get_cert = (req, res, next) => {
             cert => {
                 if (cert.length >= 1) {
                     res.status(200).json({
-                        message: "The api ran successfully",
+                        message: "Certificate verified successfully",
                         certId,
                         cert,
                     })
-                    console.log("this is the found user");
-                    console.log(cert);
                 }
             }
         )
         .catch(err => {
-            res.status(500).json({
+            res.status(204).json({
                 merror: "There has been an error",
                 error: err
             })
